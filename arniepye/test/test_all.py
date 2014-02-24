@@ -37,6 +37,12 @@ class TestCLI(unittest.TestCase):  # pylint: disable=R0904
         self.assertIs(None, cli(['install', 'testpackage']))
         self.assertIs(None, cli(['uninstall', 'testpackage']))
 
+    # TODO: mock out the server URLs?
+    # TODO: should the project name be an argument?
+    def test_upload(self):
+        """Verify the upload CLI can be called."""
+        self.assertRaises(SystemExit, cli, ['upload'])
+
     def test_serve(self):
         """Verify the server CLI can be called."""
         self.assertIs(None, cli(['serve', '--test']))
