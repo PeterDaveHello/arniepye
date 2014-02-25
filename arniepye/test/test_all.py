@@ -30,15 +30,27 @@ class TestCLI(unittest.TestCase):  # pylint: disable=R0904
         """Verify an error occurs when no package specified to uninstall."""
         self.assertRaises(SystemExit, cli, ['uninstall'])
 
+    def test_install_dry_run(self):
+        """Verify the install CLI can be dry run."""
+        self.assertIs(None, cli(['install', 'testpackage', '--dry-run']))
+
+    def test_uninstall_dry_run(self):
+        """Verify the uninstall CLI can be dry run."""
+        self.assertIs(None, cli(['uninstall', 'testpackage', '--dry-run']))
+
     @patch('sys.platform', 'win32')
     def test_install_uninstall(self):
         """Verify the install/uninstall CLI can be called."""
         self.assertIs(None, cli(['install', 'testpackage']))
         self.assertIs(None, cli(['uninstall', 'testpackage']))
 
-    def test_serve(self):
-        """Verify the server CLI can be called."""
+    def test_serve_test(self):
+        """Verify the server CLI can be called in test mode."""
         self.assertIs(None, cli(['serve', '--test']))
+
+    def test_serve_dry_run(self):
+        """Verify the server CLI can be dry run."""
+        self.assertIs(None, cli(['serve', '--dry-run']))
 
     def test_no_command(self):
         """Verify that a subcommand is required."""
