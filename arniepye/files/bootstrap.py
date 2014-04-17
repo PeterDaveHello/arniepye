@@ -63,7 +63,7 @@ if IS_WINDOWS:
     else:
         import _winreg as winreg  # pylint: disable=F0401
 
-ESSENTIALS = 'pep8', 'pylint', 'nose', 'coverage'
+ESSENTIALS = 'pep8', 'pylint', 'nose', 'coverage', 'pyinstaller'
 
 
 # http://code.activestate.com/recipes/577621-manage-environment-variables-on-windows
